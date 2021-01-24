@@ -97,15 +97,15 @@ func StopSocks() {
 	}
 }
 
-func StartV2RRayWithJsonData(configBytes []byte) bool {
+func StartV2RRayWithJsonData(configBytes []byte) *vcore.Instance {
 	v, err := vcore.StartInstance("json", configBytes)
 	if err != nil {
 		log.Fatalf("start V instance failed: %v", err)
-		return false
+		return nil
 	}
-	_ = v.Type()
+	// _ = v.Type()
 
-	return true
+	return v
 }
 
 func StopV2Ray() {
