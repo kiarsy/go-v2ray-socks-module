@@ -103,7 +103,7 @@ func StartV2RRayWithJsonData(configBytes []byte) bool {
 		log.Fatalf("start V instance failed: %v", err)
 		return false
 	}
-	// _ = v.Type()
+	_ = v.Type()
 
 	return true
 }
