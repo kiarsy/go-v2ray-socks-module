@@ -66,7 +66,7 @@ var lwipStack core.LWIPStack
 var isStopped = false
 var v *vcore.Instance
 
-func InputPacket(data []byte) {
+func InputPacket(data []byte) bool {
 	if lwipStack != nil {
 		log.Println("lwipStack is  not nil")
 	} else {
@@ -74,6 +74,8 @@ func InputPacket(data []byte) {
 	}
 
 	lwipStack.Write(data)
+
+	return lwipStack != nil
 }
 
 func StartSocks(packetFlow PacketFlow, proxyHost string, proxyPort int) {
