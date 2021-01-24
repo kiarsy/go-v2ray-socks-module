@@ -1,4 +1,4 @@
-module github.com/eycorsican/go-tun2socks-mobile
+module github.com/kiarsy/go-v2ray-socks-module
 
 go 1.13
 
