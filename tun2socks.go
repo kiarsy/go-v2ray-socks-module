@@ -67,6 +67,12 @@ var isStopped = false
 var v *vcore.Instance
 
 func InputPacket(data []byte) {
+	if lwipStack != nil {
+		log.Println("lwipStack is  not nil")
+	} else {
+		log.Println("lwipStack is  NIL")
+	}
+
 	lwipStack.Write(data)
 }
 
@@ -90,26 +96,34 @@ func StartSocks(packetFlow PacketFlow, proxyHost string, proxyPort int) {
 }
 
 func StopSocks() {
+	log.Println("StopSocks")
+
 	isStopped = true
 	if lwipStack != nil {
+		log.Println("StopSocks 2")
+
 		lwipStack.Close()
 		lwipStack = nil
 	}
 }
 
-func StartV2RRayWithJsonData(configBytes []byte) *vcore.Instance {
+func StartV2RRayWithJsonData(configBytes []byte) bool {
 	v, err := vcore.StartInstance("json", configBytes)
 	if err != nil {
 		log.Fatalf("start V instance failed: %v", err)
-		return nil
+		return false
 	}
-	// _ = v.Type()
+	_ = v.Type()
 
-	return v
+	return true
 }
 
 func StopV2Ray() {
+	log.Println("StopV2Ray")
+
 	if v != nil {
+		log.Println("StopV2Ray 2")
+
 		v.Close()
 		v = nil
 	}
