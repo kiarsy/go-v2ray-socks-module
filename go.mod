@@ -4,5 +4,5 @@ go 1.13
 
 require (
 	github.com/eycorsican/go-tun2socks v1.16.11
-	github.com/v2ray/v2ray-core v4.27.0
+	v2ray.com/core v4.27.0
 )
