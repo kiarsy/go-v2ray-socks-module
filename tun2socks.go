@@ -1,4 +1,4 @@
-package v2rayCore
+package tun2socks
 
 import (
 	"log"
